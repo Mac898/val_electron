@@ -1,0 +1,21 @@
+[application]
+name = "Val Electron GUI Builder"
+default_platform = "web"
+asset_dir = "assets"
+
+[web.app]
+title = "Val Electron GUI Builder"
+
+[web.watcher]
+reload_html = true
+watch_path = ["src", "assets"]
+
+[web.resource]
+# Include resources from assets.
+style = ["minecraft-font.css"]
+script = []
+
+[web.resource.dev]
+# Include resources only for the dev server.
+style = []
+script = []
