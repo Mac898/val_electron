@@ -7,6 +7,11 @@ use dioxus::prelude::*;
 
 use components::inventory::InventoryGUI;
 use components::size_control::InventorySizeControls;
+use components::text_control::InventoryTextControls;
+use components::copy_save_controls::InventoryCopySaveControls;
+use components::items::Items;
+use components::properties::PropertiesControls;
+
 use data::Inventory;
 
 fn main() {
@@ -19,11 +24,16 @@ fn App(cx: Scope) -> Element {
     use_shared_state_provider(cx, || Inventory::default());
     cx.render(rsx!(
         table {
+            width: "100%",
             tr {
                 td {
                     width: "30%",
                     padding_right: "30px",
                     InventorySizeControls {}
+                    br {}
+                    InventoryTextControls {}
+                    br {}
+                    InventoryCopySaveControls {}
                 }
                 td {
                     width: "50%",
@@ -32,9 +42,9 @@ fn App(cx: Scope) -> Element {
                 td {
                     width: "20%",
                     padding_left: "30px",
-                    h1 {
-                        "TEMP"
-                    }
+                    PropertiesControls {}
+                    br {}
+                    Items {}
                 }
             }
         }
