@@ -1,20 +1,8 @@
 [package]
-name = "val_electron"
+name = "val_electron_gui"
 version = "0.1.0"
 edition = "2021"
-
-[lib]
-name = "val_electron_gui"
-path = "lib/lib.rs"
-
-[[bin]]
-name = "val_electron_debug"
-path = "bin/main.rs"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 valence = { git = "https://github.com/valence-rs/valence" }
 bevy = "0.11"
-dioxus = "0.4.0"
-dioxus-web = "0.4.0"

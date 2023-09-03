@@ -1,7 +1,7 @@
 use bevy::app::Plugin;
 use bevy::log::*;
-use valence::{MINECRAFT_VERSION, PROTOCOL_VERSION};
 use valence::prelude::*;
+use valence::{MINECRAFT_VERSION, PROTOCOL_VERSION};
 
 pub struct ElectronGUIPlugin;
 
@@ -20,7 +20,7 @@ impl Plugin for ElectronGUIPlugin {
     }
 
     fn name(&self) -> &str {
-        return "Minecraft Electron GUI Plugin For valence_rs"
+        return "Minecraft Electron GUI Plugin For valence_rs";
     }
 
     fn is_unique(&self) -> bool {
