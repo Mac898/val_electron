@@ -1,8 +1,11 @@
-use crate::data::Inventory;
 use dioxus::prelude::*;
 
+use crate::data::ApplicationState;
+
+use crate::data::{GenericChestInventoryKind, HopperInventoryKind, DispenserInventoryKind};
+
 pub fn InventorySizeControls(cx: Scope) -> Element {
-    let inventory = use_shared_state::<Inventory>(cx).unwrap();
+    let state = use_shared_state::<ApplicationState>(cx).unwrap();
 
     cx.render(rsx!(
         div {
@@ -35,8 +38,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 1;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    writable_state.inventory.kind.set_rows(1);
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x1"
             }
@@ -53,8 +61,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 2;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    writable_state.inventory.kind.set_rows(2);
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x2"
             }
@@ -71,8 +84,12 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 3;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x3 (Small Chest)"
             }
@@ -89,8 +106,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 4;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    writable_state.inventory.kind.set_rows(4);
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x4"
             }
@@ -107,8 +129,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 5;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    writable_state.inventory.kind.set_rows(5);
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x5"
             }
@@ -125,8 +152,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 6;
-                    inventory.write().num_cols = 9;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
+                    writable_state.inventory.kind.set_rows(6);
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "9x6 (Large Chest)"
             }
@@ -143,8 +175,12 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 3;
-                    inventory.write().num_cols = 3;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(DispenserInventoryKind::default());
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "3x3 (Dispenser)"
             }
@@ -161,8 +197,12 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
-                    inventory.write().num_rows = 1;
-                    inventory.write().num_cols = 5;
+                    let mut writable_state = state.write();
+                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    writable_state.inventory.kind = Box::new(HopperInventoryKind::default());
+                    if reset_name {
+                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                    }
                 },
                 "5x1 (Hopper)"
             }

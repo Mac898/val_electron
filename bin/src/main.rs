@@ -13,6 +13,7 @@ use components::items::Items;
 use components::properties::PropertiesControls;
 
 use data::Inventory;
+use data::ApplicationState;
 
 fn main() {
     // launch the web app
@@ -21,7 +22,8 @@ fn main() {
 
 // create a component that renders a div with the text "Hello, world!"
 fn App(cx: Scope) -> Element {
-    use_shared_state_provider(cx, || Inventory::default());
+    use_shared_state_provider(cx, || ApplicationState::default());
+
     cx.render(rsx!(
         table {
             width: "100%",

@@ -1,8 +1,11 @@
-use crate::data::Inventory;
+use crate::data::{ApplicationState, Inventory};
 use dioxus::prelude::*;
 
 pub fn InventoryGUI(cx: Scope) -> Element {
-    let inventory = use_shared_state::<Inventory>(cx).unwrap();
+    let state = use_shared_state::<ApplicationState>(cx).unwrap();
+
+    let num_cols = state.read().inventory.kind.num_cols();
+    let num_rows = state.read().inventory.kind.num_rows();
 
     cx.render(rsx!(
         div {
@@ -18,7 +21,7 @@ pub fn InventoryGUI(cx: Scope) -> Element {
             padding_top: "42px",
             padding_bottom: "12px",
             display: "inline-grid",
-            grid_template_columns: "repeat({inventory.read().num_cols}, 54px)",
+            grid_template_columns: "repeat({num_cols}, 54px)",
             gap: "0px",
             h5 {
                 position: "absolute",
@@ -27,10 +30,10 @@ pub fn InventoryGUI(cx: Scope) -> Element {
                 font_family: "minecraftregular",
                 color: "#414141",
                 font_size: "18pt",
-                "{inventory.read().text}"
+                "{state.read().inventory.name}"
             }
-            for _ in 0..inventory.read().num_cols {
-                for _ in 0..inventory.read().num_rows {
+            for _ in 0..num_cols {
+                for _ in 0..num_rows {
                     div {
                         width: "48px",
                         height: "48px",

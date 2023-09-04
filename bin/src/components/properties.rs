@@ -1,8 +1,8 @@
-use crate::data::Inventory;
+use crate::data::ApplicationState;
 use dioxus::prelude::*;
 
 pub fn PropertiesControls(cx: Scope) -> Element {
-    let inventory = use_shared_state::<Inventory>(cx).unwrap();
+    let state = use_shared_state::<ApplicationState>(cx).unwrap();
 
     cx.render(rsx!(
         div {
