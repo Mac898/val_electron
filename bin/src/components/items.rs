@@ -1,8 +1,9 @@
 use crate::data::Inventory;
 use dioxus::prelude::*;
+use minecraft_data_rs::Api;
 
 pub fn Items(cx: Scope) -> Element {
-    let num_items = 30_u32;
+    let items = Api::latest().unwrap().items.items_array().unwrap();
 
     cx.render(rsx!(
         div {
@@ -17,24 +18,26 @@ pub fn Items(cx: Scope) -> Element {
             padding_right: "12px",
             padding_top: "42px",
             padding_bottom: "12px",
-            display: "inline-grid",
-            grid_template_columns: "repeat(5, 54px)",
-            gap: "0px",
-            h5 {
-                position: "absolute",
-                top: "-29px",
-                left: "16px",
-                font_family: "minecraftregular",
-                color: "#414141",
-                font_size: "18pt",
-                "Items"
+            div {
+                h5 {
+                    position: "absolute",
+                    top: "-29px",
+                    left: "16px",
+                    font_family: "minecraftregular",
+                    color: "#414141",
+                    font_size: "18pt",
+                    "Items"
+                }
             }
             div {
+                display: "block",
+                width: "240px",
+                margin: "0px auto",
                 // Search Box
                 input {
-                    value: "Search...",
+                    placeholder: "Search...",
                     display: "block",
-                    margin: "10px auto",
+                    margin: "0px auto",
                     padding: "10px 20px",
                     font_size: "16px",
                     color: "#333",
@@ -45,20 +48,31 @@ pub fn Items(cx: Scope) -> Element {
                     oninput: move | evt | {}
                 }
             }
-            for _ in 0..num_items {
-                div {
-                    width: "48px",
-                    height: "48px",
-                    border_left: "3px solid #333333",
-                    border_top: "3px solid #333333",
-                    border_bottom: "3px solid #ffffff",
-                    border_right: "3px solid #ffffff",
-                    background_color: "#8b8b8b",
-                    display: "flex",
-                    justify_content: "center",
-                    align_items: "center",
-                    font_size: "18px",
-                    color: "#8b8b8b",
+            br {}
+            div {
+                display: "inline-grid",
+                grid_template_columns: "repeat(5, 54px)",
+                gap: "0px",
+                for item in items {
+                    div {
+                        width: "48px",
+                        height: "48px",
+                        border_left: "3px solid #333333",
+                        border_top: "3px solid #333333",
+                        border_bottom: "3px solid #ffffff",
+                        border_right: "3px solid #ffffff",
+                        background_color: "#8b8b8b",
+                        display: "flex",
+                        justify_content: "center",
+                        align_items: "center",
+                        font_size: "18px",
+                        color: "#8b8b8b",
+                        img {
+                            src: "resources/assets/minecraft/textures/item/{item.name}.png",
+                            width: "46px",
+                            height: "46px",
+                        }
+                    }
                 }
             }
         }

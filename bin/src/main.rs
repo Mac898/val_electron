@@ -38,11 +38,11 @@ fn App(cx: Scope) -> Element {
                     InventoryCopySaveControls {}
                 }
                 td {
-                    width: "50%",
+                    min_width: "50%",
                     InventoryGUI {}
                 }
                 td {
-                    width: "20%",
+                    width: "304px",
                     padding_left: "30px",
                     PropertiesControls {}
                     br {}

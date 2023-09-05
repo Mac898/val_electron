@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn InventoryTextControls(cx: Scope) -> Element {
     let state = use_shared_state::<ApplicationState>(cx).unwrap();
 
-    let inventory_name = state.read().inventory.name.clone();
+    let inventory_name = state.read().inventory.kind.default_name().to_string();
 
     cx.render( rsx!(
         div {
@@ -25,7 +25,7 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
 
             // Text Box
             input {
-                value: "{inventory_name}",
+                placeholder: "{inventory_name}",
                 display: "block",
                 margin: "10px auto",
                 padding: "10px 20px",
