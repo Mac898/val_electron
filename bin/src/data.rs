@@ -1,15 +1,18 @@
+use std::cell::RefCell;
 use std::collections::HashMap;
 
 pub struct ApplicationState {
     pub selected_item: Option<u32>,
     pub inventory: Inventory,
+    pub draggedData: RefCell<Option<String>>,
 }
 
 impl Default for ApplicationState {
     fn default() -> Self {
         ApplicationState {
-            selected_item: Option::None,
+            selected_item: None,
             inventory: Default::default(),
+            draggedData: RefCell::from(None),
         }
     }
 }
@@ -31,9 +34,8 @@ impl Default for Inventory {
 }
 
 pub struct Item {
-    pub id: u32,
-    pub image_path: String,
-    pub on_click: String,
+    pub id: String,
+    pub on_click: Option<String>,
 }
 
 pub trait InventoryKind {

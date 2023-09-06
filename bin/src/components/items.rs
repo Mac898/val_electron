@@ -1,8 +1,10 @@
-use crate::data::Inventory;
+use crate::data::ApplicationState;
 use dioxus::prelude::*;
+use std::cell::RefCell;
 use minecraft_data_rs::Api;
 
 pub fn Items(cx: Scope) -> Element {
+    let state = use_shared_state::<ApplicationState>(cx).unwrap();
     let items = Api::latest().unwrap().items.items_array().unwrap();
 
     cx.render(rsx!(
@@ -71,6 +73,13 @@ pub fn Items(cx: Scope) -> Element {
                             src: "resources/assets/minecraft/textures/item/{item.name}.png",
                             width: "46px",
                             height: "46px",
+                            draggable: true,
+                            ondragstart: move | _ | {
+                                state.write().draggedData = RefCell::from(Option::from(item.name.clone()));
+                            },
+                            ondragend: move | _ | {
+                                state.write().draggedData = RefCell::from(None);
+                            },
                         }
                     }
                 }

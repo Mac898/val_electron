@@ -12,7 +12,6 @@ use components::copy_save_controls::InventoryCopySaveControls;
 use components::items::Items;
 use components::properties::PropertiesControls;
 
-use data::Inventory;
 use data::ApplicationState;
 
 fn main() {

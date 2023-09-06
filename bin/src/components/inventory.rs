@@ -1,4 +1,4 @@
-use crate::data::{ApplicationState, Inventory};
+use crate::data::{ApplicationState, Item};
 use dioxus::prelude::*;
 
 pub fn InventoryGUI(cx: Scope) -> Element {
@@ -32,8 +32,8 @@ pub fn InventoryGUI(cx: Scope) -> Element {
                 font_size: "18pt",
                 "{state.read().inventory.name}"
             }
-            for _ in 0..num_cols {
-                for _ in 0..num_rows {
+            for colpos in 0..num_cols {
+                for rowpos in 0..num_rows {
                     div {
                         width: "48px",
                         height: "48px",
@@ -47,6 +47,29 @@ pub fn InventoryGUI(cx: Scope) -> Element {
                         align_items: "center",
                         font_size: "18px",
                         color: "#8b8b8b",
+                        prevent_default: "ondragover",
+                        prevent_default: "ondrop",
+                        ondrop: move | _ | {
+                            let mut wstate = state.write();
+                            let slotnum = rowpos * wstate.inventory.kind.num_cols() + colpos;
+
+                            let draggedDataCell = wstate.draggedData.clone();
+                            let inventory = &mut wstate.inventory;
+
+                            let draggedData = draggedDataCell.borrow().clone().unwrap();
+
+                            match inventory.slots.get_mut(&slotnum) {
+                                Some(item) => {
+                                    item.id = draggedData;
+                                }
+                                None => {
+                                    inventory.slots.insert(slotnum, Item {
+                                        id: draggedData,
+                                        on_click: None,
+                                    });
+                                }
+                            }
+                        },
                     }
                 }
             }
