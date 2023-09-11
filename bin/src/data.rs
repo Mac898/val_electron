@@ -1,52 +1,7 @@
-use std::cell::RefCell;
-use std::collections::HashMap;
-
-pub struct ApplicationState {
-    pub selected_item: Option<u32>,
-    pub inventory: Inventory,
-    pub draggedData: RefCell<Option<String>>,
-}
-
-impl Default for ApplicationState {
-    fn default() -> Self {
-        ApplicationState {
-            selected_item: None,
-            inventory: Default::default(),
-            draggedData: RefCell::from(None),
-        }
-    }
-}
-
-pub struct Inventory {
-    pub name: String,
-    pub slots: HashMap<u32, Item>,
-    pub kind: Box<dyn InventoryKind>,
-}
-impl Default for Inventory {
-    fn default() -> Self {
-        let kind = GenericChestInventoryKind::default();
-        Inventory {
-            name: kind.default_name().to_string(),
-            slots: Default::default(),
-            kind: Box::new(kind),
-        }
-    }
-}
-
-pub struct Item {
-    pub id: String,
-    pub on_click: Option<String>,
-}
-
-pub trait InventoryKind {
-    fn max_cols(&self) -> u32;
-    fn max_rows(&self) -> u32;
-    fn num_rows(&self) -> u32;
-    fn num_cols(&self) -> u32;
-    fn set_rows(&mut self, rows: u32);
-    fn set_cols(&mut self, cols: u32);
-    fn default_name(&self) -> &'static str;
-}
+pub mod interaction_movement;
+pub mod inventory_type;
+pub mod inventory_items;
+pub mod inventory_actions;
 
 pub struct GenericChestInventoryKind {
     pub rows: u32,

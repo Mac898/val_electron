@@ -31,10 +31,7 @@ pub fn Items(cx: Scope) -> Element {
                     "Items"
                 }
             }
-            div {
-                display: "block",
-                width: "240px",
-                margin: "0px auto",
+            div { display: "block", width: "240px", margin: "0px auto",
                 // Search Box
                 input {
                     placeholder: "Search...",
@@ -47,14 +44,11 @@ pub fn Items(cx: Scope) -> Element {
                     cursor: "pointer",
                     transition: "background-color 0.3s, transform 0.2s",
                     width: "100%",
-                    oninput: move | evt | {}
+                    oninput: move |evt| {}
                 }
             }
             br {}
-            div {
-                display: "inline-grid",
-                grid_template_columns: "repeat(5, 54px)",
-                gap: "0px",
+            div { display: "inline-grid", grid_template_columns: "repeat(5, 54px)", gap: "0px",
                 for item in items {
                     div {
                         width: "48px",
@@ -74,12 +68,12 @@ pub fn Items(cx: Scope) -> Element {
                             width: "46px",
                             height: "46px",
                             draggable: true,
-                            ondragstart: move | _ | {
+                            ondragstart: move |_| {
                                 state.write().draggedData = RefCell::from(Option::from(item.name.clone()));
                             },
-                            ondragend: move | _ | {
+                            ondragend: move |_| {
                                 state.write().draggedData = RefCell::from(None);
-                            },
+                            }
                         }
                     }
                 }

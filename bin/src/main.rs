@@ -24,25 +24,17 @@ fn App(cx: Scope) -> Element {
     use_shared_state_provider(cx, || ApplicationState::default());
 
     cx.render(rsx!(
-        table {
-            width: "100%",
+        table { width: "100%",
             tr {
-                td {
-                    width: "30%",
-                    padding_right: "30px",
+                td { width: "30%", padding_right: "30px",
                     InventorySizeControls {}
                     br {}
                     InventoryTextControls {}
                     br {}
                     InventoryCopySaveControls {}
                 }
-                td {
-                    min_width: "50%",
-                    InventoryGUI {}
-                }
-                td {
-                    width: "304px",
-                    padding_left: "30px",
+                td { min_width: "50%", InventoryGUI {} }
+                td { width: "304px", padding_left: "30px",
                     PropertiesControls {}
                     br {}
                     Items {}

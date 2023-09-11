@@ -17,12 +17,7 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
             box_shadow: "0px 2px 4px rgba(0,0,0,0.1)",
 
             // Title
-            h2 {
-                font_size: "24px",
-                margin_top: "0px",
-                margin_bottom: "20px",
-                "Inventory Sizes"
-            }
+            h2 { font_size: "24px", margin_top: "0px", margin_bottom: "20px", "Inventory Sizes" }
 
             // Size Buttons
             button {
@@ -39,11 +34,14 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     writable_state.inventory.kind.set_rows(1);
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x1"
@@ -62,11 +60,14 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     writable_state.inventory.kind.set_rows(2);
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x2"
@@ -85,10 +86,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x3 (Small Chest)"
@@ -107,11 +111,14 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     writable_state.inventory.kind.set_rows(4);
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x4"
@@ -130,11 +137,14 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     writable_state.inventory.kind.set_rows(5);
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x5"
@@ -153,11 +163,14 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
                     writable_state.inventory.kind.set_rows(6);
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "9x6 (Large Chest)"
@@ -176,10 +189,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(DispenserInventoryKind::default());
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "3x3 (Dispenser)"
@@ -198,10 +214,13 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
                 width: "100%",
                 onclick: move |_| {
                     let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name == writable_state.inventory.kind.default_name();
+                    let reset_name = writable_state.inventory.name
+                        == writable_state.inventory.kind.default_name();
                     writable_state.inventory.kind = Box::new(HopperInventoryKind::default());
                     if reset_name {
-                        writable_state.inventory.name = writable_state.inventory.kind.default_name().to_string();
+                        writable_state
+                            .inventory
+                            .name = writable_state.inventory.kind.default_name().to_string();
                     }
                 },
                 "5x1 (Hopper)"
