@@ -1,10 +1,25 @@
-use dioxus::html::KeyCode::P;
+use enum_dispatch::enum_dispatch;
 
+#[enum_dispatch]
 pub enum InventoryTypes {
     SmallChest(SmallChestType),
     LargeChest(LargeChestType),
     Hopper(HopperType),
     Dispenser(DispenserType)
+}
+
+#[enum_dispatch(InventoryTypes)]
+pub trait InventoryType {
+    fn get_columns(&self) -> u32;
+    fn get_rows(&self) -> u32;
+
+    fn get_min_columns(&self) -> u32;
+    fn get_max_columns(&self) -> u32;
+
+    fn get_min_rows(&self) -> u32;
+    fn get_max_rows(&self) -> u32;
+
+    fn default_name(&self) -> String;
 }
 
 pub struct SmallChestType {
@@ -17,14 +32,125 @@ impl Default for SmallChestType {
         }
     }
 }
-impl SmallChestType {
-    pub fn get_min_rows() -> u32 {
+impl InventoryType for SmallChestType {
+    fn get_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_rows(&self) -> u32 {
+        return self.rows
+    }
+
+    fn get_min_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_max_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_min_rows(&self) -> u32 {
         1
     }
-    pub fn get_max_rows() -> u32 {
+    fn get_max_rows(&self) -> u32 {
         3
     }
-    pub fn default_name() -> String {
+    fn default_name(&self) -> String {
         "Chest".to_string()
+    }
+}
+
+pub struct LargeChestType {
+    rows: u32,
+}
+impl InventoryType for LargeChestType {
+    fn get_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_rows(&self) -> u32 {
+        return self.rows
+    }
+
+    fn get_min_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_max_columns(&self) -> u32 {
+        9
+    }
+
+    fn get_min_rows(&self) -> u32 {
+        4
+    }
+
+    fn get_max_rows(&self) -> u32 {
+        6
+    }
+
+    fn default_name(&self) -> String {
+        "Large Chest".to_string()
+    }
+}
+
+pub struct HopperType {}
+impl InventoryType for HopperType {
+    fn get_columns(&self) -> u32 {
+        5
+    }
+
+    fn get_rows(&self) -> u32 {
+        1
+    }
+
+    fn get_min_columns(&self) -> u32 {
+        5
+    }
+
+    fn get_max_columns(&self) -> u32 {
+        5
+    }
+
+    fn get_min_rows(&self) -> u32 {
+        1
+    }
+
+    fn get_max_rows(&self) -> u32 {
+        1
+    }
+
+    fn default_name(&self) -> String {
+        "Hopper".to_string()
+    }
+}
+
+pub struct DispenserType {}
+impl InventoryType for DispenserType {
+    fn get_columns(&self) -> u32 {
+        3
+    }
+
+    fn get_rows(&self) -> u32 {
+        3
+    }
+
+    fn get_min_columns(&self) -> u32 {
+        3
+    }
+
+    fn get_max_columns(&self) -> u32 {
+        3
+    }
+
+    fn get_min_rows(&self) -> u32 {
+        3
+    }
+
+    fn get_max_rows(&self) -> u32 {
+        3
+    }
+
+    fn default_name(&self) -> String {
+        "Dispenser".to_string()
     }
 }
