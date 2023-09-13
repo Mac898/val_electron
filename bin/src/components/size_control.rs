@@ -1,12 +1,8 @@
+use crate::data::inventory_type::{SmallChestType, LargeChestType, DispenserType, HopperType, InventoryTypes};
+
 use dioxus::prelude::*;
 
-use crate::data::ApplicationState;
-
-use crate::data::{GenericChestInventoryKind, HopperInventoryKind, DispenserInventoryKind};
-
 pub fn InventorySizeControls(cx: Scope) -> Element {
-    let state = use_shared_state::<ApplicationState>(cx).unwrap();
-
     cx.render(rsx!(
         div {
             margin: "0 auto",
@@ -20,211 +16,78 @@ pub fn InventorySizeControls(cx: Scope) -> Element {
             h2 { font_size: "24px", margin_top: "0px", margin_bottom: "20px", "Inventory Sizes" }
 
             // Size Buttons
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    writable_state.inventory.kind.set_rows(1);
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "9x1"
+            SizeChangeButton {
+                name: "9x1",
+                new_inventory_kind: InventoryTypes::SmallChest(SmallChestType::default()),
+                rows: 1
             }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    writable_state.inventory.kind.set_rows(2);
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "9x2"
+            SizeChangeButton {
+                name: "9x2",
+                new_inventory_kind: InventoryTypes::SmallChest(SmallChestType::default()),
+                rows: 2
             }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "9x3 (Small Chest)"
+            SizeChangeButton { name: "9x3", new_inventory_kind: InventoryTypes::SmallChest(SmallChestType::default()) }
+            SizeChangeButton {
+                name: "9x4",
+                new_inventory_kind: InventoryTypes::LargeChest(LargeChestType::default()),
+                rows: 4
             }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    writable_state.inventory.kind.set_rows(4);
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "9x4"
+            SizeChangeButton {
+                name: "9x5",
+                new_inventory_kind: InventoryTypes::LargeChest(LargeChestType::default()),
+                rows: 5
             }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    writable_state.inventory.kind.set_rows(5);
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "9x5"
+            SizeChangeButton { name: "9x6", new_inventory_kind: InventoryTypes::LargeChest(LargeChestType::default()) }
+            SizeChangeButton { name: "5x1 (Hopper)", new_inventory_kind: InventoryTypes::Hopper(HopperType::default()) }
+            SizeChangeButton {
+                name: "3x3 (Dispenser)",
+                new_inventory_kind: InventoryTypes::Dispenser(DispenserType::default())
             }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(GenericChestInventoryKind::default());
-                    writable_state.inventory.kind.set_rows(6);
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
+        }
+    ))
+}
+
+#[derive(PartialEq, Props)]
+pub struct SizeChangeButtonProps {
+    name: &'static str,
+    new_inventory_kind: InventoryTypes,
+    rows: Option<u32>,
+}
+
+pub fn SizeChangeButton(cx: Scope<SizeChangeButtonProps>) -> Element {
+    let inventory_type = use_shared_state::<InventoryTypes>(cx).unwrap();
+
+    cx.render(rsx!(
+        button {
+            display: "block",
+            margin: "10px auto",
+            padding: "10px 20px",
+            font_size: "16px",
+            background_color: "#007bff",
+            color: "#fff",
+            border: "none",
+            border_radius: "5px",
+            cursor: "pointer",
+            transition: "background-color 0.3s, transform 0.2s",
+            width: "100%",
+            onclick: move |_| {
+                let mut new_inventory_type = cx.props.new_inventory_kind.clone();
+                match new_inventory_type {
+                    InventoryTypes::SmallChest(ref mut chest) => {
+                        if let Some(row_count) = cx.props.rows {
+                            chest.rows = row_count;
+                        }
                     }
-                },
-                "9x6 (Large Chest)"
-            }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(DispenserInventoryKind::default());
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
+                    InventoryTypes::LargeChest(ref mut chest) => {
+                        if let Some(row_count) = cx.props.rows {
+                            chest.rows = row_count;
+                        }
                     }
-                },
-                "3x3 (Dispenser)"
-            }
-            button {
-                display: "block",
-                margin: "10px auto",
-                padding: "10px 20px",
-                font_size: "16px",
-                background_color: "#007bff",
-                color: "#fff",
-                border: "none",
-                border_radius: "5px",
-                cursor: "pointer",
-                transition: "background-color 0.3s, transform 0.2s",
-                width: "100%",
-                onclick: move |_| {
-                    let mut writable_state = state.write();
-                    let reset_name = writable_state.inventory.name
-                        == writable_state.inventory.kind.default_name();
-                    writable_state.inventory.kind = Box::new(HopperInventoryKind::default());
-                    if reset_name {
-                        writable_state
-                            .inventory
-                            .name = writable_state.inventory.kind.default_name().to_string();
-                    }
-                },
-                "5x1 (Hopper)"
-            }
+                    _ => {}
+                }
+                *inventory_type.write() = new_inventory_type;
+            },
+            "{cx.props.name}"
         }
     ))
 }

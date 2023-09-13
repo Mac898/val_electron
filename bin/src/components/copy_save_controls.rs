@@ -1,9 +1,6 @@
-use crate::data::ApplicationState;
 use dioxus::prelude::*;
 
 pub fn InventoryCopySaveControls(cx: Scope) -> Element {
-    let state = use_shared_state::<ApplicationState>(cx).unwrap();
-
     cx.render( rsx!(
         div {
             margin: "0 auto",

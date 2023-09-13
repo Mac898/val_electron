@@ -1,10 +1,9 @@
-use crate::data::ApplicationState;
 use dioxus::prelude::*;
-use std::cell::RefCell;
 use minecraft_data_rs::Api;
+use crate::data::interaction_movement::ItemMovementState;
 
 pub fn Items(cx: Scope) -> Element {
-    let state = use_shared_state::<ApplicationState>(cx).unwrap();
+    let drag_data = use_shared_state::<ItemMovementState>(cx).unwrap();
     let items = Api::latest().unwrap().items.items_array().unwrap();
 
     cx.render(rsx!(
@@ -44,7 +43,7 @@ pub fn Items(cx: Scope) -> Element {
                     cursor: "pointer",
                     transition: "background-color 0.3s, transform 0.2s",
                     width: "100%",
-                    oninput: move |evt| {}
+                    oninput: move |_| {}
                 }
             }
             br {}
@@ -68,11 +67,15 @@ pub fn Items(cx: Scope) -> Element {
                             width: "46px",
                             height: "46px",
                             draggable: true,
-                            ondragstart: move |_| {
-                                state.write().draggedData = RefCell::from(Option::from(item.name.clone()));
+                            ondragstart: move |event| {
+                                log::info!("Drag Start Event");
+                                event.stop_propagation();
+                                drag_data.write().dragged_item = Option::from(item.name.clone());
                             },
-                            ondragend: move |_| {
-                                state.write().draggedData = RefCell::from(None);
+                            ondragend: move |event| {
+                                log::info!("Drag Stop Event");
+                                event.stop_propagation();
+                                drag_data.write().dragged_item = None;
                             }
                         }
                     }

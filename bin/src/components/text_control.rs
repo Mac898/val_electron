@@ -1,10 +1,11 @@
-use crate::data::ApplicationState;
+use crate::data::Inventory;
+use crate::data::inventory_type::{InventoryTypes, InventoryType};
+
 use dioxus::prelude::*;
 
 pub fn InventoryTextControls(cx: Scope) -> Element {
-    let state = use_shared_state::<ApplicationState>(cx).unwrap();
-
-    let inventory_name = state.read().inventory.kind.default_name().to_string();
+    let inventory = use_shared_state::<Inventory>(cx).unwrap();
+    let inventory_types = use_shared_state::<InventoryTypes>(cx).unwrap();
 
     cx.render( rsx!(
         div {
@@ -20,7 +21,7 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
 
             // Text Box
             input {
-                placeholder: "{inventory_name}",
+                placeholder: "{inventory_types.read().default_name()}",
                 display: "block",
                 margin: "10px auto",
                 padding: "10px 20px",
@@ -30,7 +31,7 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
                 cursor: "pointer",
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
-                oninput: move |evt| state.write().inventory.name = (evt.value.clone())
+                oninput: move |evt| { inventory.write().name = evt.value.clone() }
             }
         }
     ))

@@ -1,6 +1,7 @@
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
+#[derive(PartialEq, Clone)]
 pub enum InventoryTypes {
     SmallChest(SmallChestType),
     LargeChest(LargeChestType),
@@ -22,8 +23,9 @@ pub trait InventoryType {
     fn default_name(&self) -> String;
 }
 
+#[derive(PartialEq, Clone)]
 pub struct SmallChestType {
-    rows: u32,
+    pub rows: u32,
 }
 impl Default for SmallChestType {
     fn default() -> Self {
@@ -60,8 +62,16 @@ impl InventoryType for SmallChestType {
     }
 }
 
+#[derive(PartialEq, Clone)]
 pub struct LargeChestType {
-    rows: u32,
+    pub rows: u32,
+}
+impl Default for LargeChestType {
+    fn default() -> Self {
+        Self {
+            rows: 6
+        }
+    }
 }
 impl InventoryType for LargeChestType {
     fn get_columns(&self) -> u32 {
@@ -93,6 +103,7 @@ impl InventoryType for LargeChestType {
     }
 }
 
+#[derive(PartialEq, Default, Clone)]
 pub struct HopperType {}
 impl InventoryType for HopperType {
     fn get_columns(&self) -> u32 {
@@ -124,6 +135,7 @@ impl InventoryType for HopperType {
     }
 }
 
+#[derive(PartialEq, Default, Clone)]
 pub struct DispenserType {}
 impl InventoryType for DispenserType {
     fn get_columns(&self) -> u32 {
