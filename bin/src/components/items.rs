@@ -69,12 +69,10 @@ pub fn Items(cx: Scope) -> Element {
                             draggable: true,
                             ondragstart: move |event| {
                                 log::info!("Drag Start Event");
-                                event.stop_propagation();
                                 drag_data.write().dragged_item = Option::from(item.name.clone());
                             },
                             ondragend: move |event| {
                                 log::info!("Drag Stop Event");
-                                event.stop_propagation();
                                 drag_data.write().dragged_item = None;
                             }
                         }

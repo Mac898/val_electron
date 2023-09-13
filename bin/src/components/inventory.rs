@@ -68,7 +68,7 @@ fn InventoryCell(cx: Scope<InventoryCellProps>) -> Element {
             img_if_needed = rsx!("")
         };
     }
-
+    
     cx.render(rsx!(
         div {
             width: "48px",
