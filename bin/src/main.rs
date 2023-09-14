@@ -25,7 +25,6 @@ fn main() {
     dioxus_web::launch(App);
 }
 
-// create a component that renders a div with the text "Hello, world!"
 fn App(cx: Scope) -> Element {
     use_shared_state_provider(cx, Inventory::default);
     use_shared_state_provider(cx, ItemMovementState::default);
@@ -41,7 +40,7 @@ fn App(cx: Scope) -> Element {
                     br {}
                     InventoryCopySaveControls {}
                 }
-                td { min_width: "50%", InventoryGUI {}}
+                td { min_width: "50%", InventoryGUI {} }
                 td { width: "304px", padding_left: "30px",
                     PropertiesControls {}
                     br {}

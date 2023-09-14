@@ -1,10 +1,23 @@
 use dioxus::prelude::*;
 use minecraft_data_rs::Api;
+
 use crate::data::interaction_movement::ItemMovementState;
+use crate::data::inventory_items::Item;
 
 pub fn Items(cx: Scope) -> Element {
+    let search_data = use_state::<String>(cx, String::default);
     let drag_data = use_shared_state::<ItemMovementState>(cx).unwrap();
     let items = Api::latest().unwrap().items.items_array().unwrap();
+
+    let items_render = if !search_data.get().is_empty() {
+        let found_items = items
+            .iter()
+            .filter(|item| item.name.contains(search_data.get().as_str()))
+            .cloned();
+        found_items.take(30).collect()
+    } else {
+        items[0..30].to_vec()
+    };
 
     cx.render(rsx!(
         div {
@@ -43,12 +56,14 @@ pub fn Items(cx: Scope) -> Element {
                     cursor: "pointer",
                     transition: "background-color 0.3s, transform 0.2s",
                     width: "100%",
-                    oninput: move |_| {}
+                    oninput: move |evtent| {
+                        search_data.set(evtent.value.clone());
+                    }
                 }
             }
             br {}
             div { display: "inline-grid", grid_template_columns: "repeat(5, 54px)", gap: "0px",
-                for item in items {
+                for item in items_render {
                     div {
                         width: "48px",
                         height: "48px",
@@ -67,12 +82,10 @@ pub fn Items(cx: Scope) -> Element {
                             width: "46px",
                             height: "46px",
                             draggable: true,
-                            ondragstart: move |event| {
-                                log::info!("Drag Start Event");
-                                drag_data.write().dragged_item = Option::from(item.name.clone());
+                            ondragstart: move |_| {
+                                drag_data.write().dragged_item = Option::from(Item::from(item.clone()));
                             },
-                            ondragend: move |event| {
-                                log::info!("Drag Stop Event");
+                            ondragend: move |_| {
                                 drag_data.write().dragged_item = None;
                             }
                         }

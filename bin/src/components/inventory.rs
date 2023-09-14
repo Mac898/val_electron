@@ -1,7 +1,6 @@
 use crate::data::Inventory;
 use crate::data::interaction_movement::ItemMovementState;
 use crate::data::inventory_type::{InventoryTypes, InventoryType};
-use crate::data::inventory_items::Item;
 
 use dioxus::prelude::*;
 
@@ -61,8 +60,35 @@ fn InventoryCell(cx: Scope<InventoryCellProps>) -> Element {
         let w_inv_data = inventory_data.read();
         if let Some(item) = w_inv_data.slots.get(&slot_num) {
             let item_name = item.id.clone();
+            let item_clone = item.clone();
             img_if_needed = rsx!(
-                img { src: "resources/assets/minecraft/textures/item/{item_name}.png", width: "46px", height: "46px" }
+                img {
+                    src: "resources/assets/minecraft/textures/item/{item_name}.png",
+                    width: "46px",
+                    height: "46px",
+                    draggable: true,
+                    prevent_default: "onclick click oncontextmenu contextmenu onmousedown mousedown",
+                    // Make prevent_default work by causing event handler in JS.
+                    oncontextmenu: move |_| {
+                        let inventory = &mut inventory_data.write();
+                        inventory.slots.remove(&slot_num);
+
+                    },
+                    onclick: move |_| {
+                        let mut draggedData = drag_data.write();
+                        draggedData.selected_item = Some(slot_num);
+                    },
+                    // Actual events.
+                    ondragstart: move |_| {
+                        let item_clone = item_clone.clone();
+                        drag_data.write().dragged_item = Option::from(item_clone);
+                        drag_data.write().dragged_from_inventory = true;
+                        drag_data.write().dragged_from_slot = slot_num;
+                    },
+                    ondragend: move |_| {
+                        drag_data.write().dragged_item = None;
+                    }
+                }
             )
         } else {
             img_if_needed = rsx!("")
@@ -83,25 +109,24 @@ fn InventoryCell(cx: Scope<InventoryCellProps>) -> Element {
             align_items: "center",
             font_size: "18px",
             color: "#8b8b8b",
-            prevent_default: "dragover dragenter",
+            prevent_default: "dragover dragenter ondragover ondragenter",
+            // To cause the events to show up in JS.
+            ondragover: move |_| {},
+            // Actual events
             ondrop: move |event| {
-                log::info!("Drop Event Caught");
                 event.stop_propagation();
                 let inventory = &mut inventory_data.write();
                 let draggedData = drag_data.write();
                 match inventory.slots.get_mut(&slot_num) {
                     Some(item) => {
-                        item.id = draggedData.dragged_item.clone().unwrap();
+                        *item = draggedData.dragged_item.clone().unwrap();
                     }
                     None => {
-                        inventory.slots.insert(
-                                slot_num,
-                                Item {
-                                    id: draggedData.dragged_item.clone().unwrap(),
-                                    on_click: None,
-                                },
-                            );
+                        inventory.slots.insert(slot_num, draggedData.dragged_item.clone().unwrap());
                     }
+                }
+                if draggedData.dragged_from_inventory {
+                    inventory.slots.remove(&draggedData.dragged_from_slot);
                 }
             },
             img_if_needed
