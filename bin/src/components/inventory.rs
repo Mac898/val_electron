@@ -5,10 +5,17 @@ use crate::data::inventory_type::{InventoryTypes, InventoryType};
 use dioxus::prelude::*;
 
 pub fn InventoryGUI(cx: Scope) -> Element {
+    let inventory = use_shared_state::<Inventory>(cx).unwrap();
     let kind = use_shared_state::<InventoryTypes>(cx).unwrap();
 
     let num_cols = kind.read().get_columns();
     let num_rows = kind.read().get_rows();
+
+    let inventory_name = if inventory.read().name.is_empty() {
+        kind.read().default_name()
+    } else {
+        inventory.read().name.clone()
+    };
 
     cx.render(rsx!(
         div {
@@ -33,7 +40,7 @@ pub fn InventoryGUI(cx: Scope) -> Element {
                 font_family: "minecraftregular",
                 color: "#414141",
                 font_size: "18pt",
-                "{kind.read().default_name()}"
+                "{inventory_name}"
             }
             for rownum in 0..num_rows {
                 for colnum in 0..num_cols {
