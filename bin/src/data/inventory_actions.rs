@@ -1,6 +1,7 @@
 
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 pub enum ItemActions {
-    Command,
-    ChangeServer
+    ChangeUI(String),
+    Command(String),
+    ChangeServer(String)
 }
