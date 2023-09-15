@@ -19,7 +19,7 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
             // Title
             h2 { font_size: "24px", margin_top: "0px", margin_bottom: "20px", "Inventory Text" }
 
-            // Text Box
+            // Text - Inventory Name
             input {
                 placeholder: "{inventory_types.read().default_name()}",
                 display: "block",
@@ -32,6 +32,24 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 oninput: move |evt| { inventory.write().name = evt.value.clone() }
+            }
+
+            // Title - GUI Name
+            h2 { font_size: "24px", margin_top: "0px", margin_bottom: "20px", "GUI Name" }
+
+            // Text - GUI Name
+            input {
+                placeholder: "Name of your GUI",
+                display: "block",
+                margin: "10px auto",
+                padding: "10px 20px",
+                font_size: "16px",
+                color: "#333",
+                border: "2px solid #007bff",
+                cursor: "pointer",
+                transition: "background-color 0.3s, transform 0.2s",
+                width: "100%",
+                oninput: move |evt| { inventory.write().gui_name = evt.value.clone() }
             }
         }
     ))

@@ -79,7 +79,6 @@ fn InventoryCell(cx: Scope<InventoryCellProps>) -> Element {
                     oncontextmenu: move |_| {
                         let inventory = &mut inventory_data.write();
                         inventory.slots.remove(&slot_num);
-
                     },
                     onclick: move |_| {
                         let mut draggedData = drag_data.write();

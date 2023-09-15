@@ -10,6 +10,7 @@ pub mod inventory_actions;
 pub struct Inventory {
     pub slots: HashMap<u32, Item>,
     pub name: String,
+    pub gui_name: String,
 }
 impl Default for Inventory {
     fn default() -> Self {
@@ -17,6 +18,7 @@ impl Default for Inventory {
         Self {
             slots: HashMap::with_capacity(100),
             name: default_type.default_name(),
+            gui_name: "".to_string(),
         }
     }
 }

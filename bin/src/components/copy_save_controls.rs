@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
+use crate::data::Inventory;
 
 pub fn InventoryCopySaveControls(cx: Scope) -> Element {
+    let inventory = use_shared_state::<Inventory>(cx).unwrap();
+
     cx.render( rsx!(
         div {
             margin: "0 auto",
@@ -26,7 +29,8 @@ pub fn InventoryCopySaveControls(cx: Scope) -> Element {
                 cursor: "pointer",
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
-                onclick: move |_| {},
+                onclick: move |_| {
+                },
                 "Import Inventory"
             }
             button {
@@ -41,7 +45,12 @@ pub fn InventoryCopySaveControls(cx: Scope) -> Element {
                 cursor: "pointer",
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
-                onclick: move |_| {},
+                onclick: move |_| {
+                    let rinventory = inventory.read();
+                    if !rinventory.gui_name.is_empty() {
+
+                    }
+                },
                 "Export Inventory"
             }
         }
