@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-use crate::data::inventory_items::Item;
-use crate::data::inventory_type::{InventoryType, SmallChestType};
+use inventory_items::Item;
+use inventory_type::{InventoryType, SmallChestType};
 
 pub mod interaction_movement;
 pub mod inventory_type;

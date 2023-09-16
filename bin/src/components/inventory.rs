@@ -1,7 +1,6 @@
 use crate::data::Inventory;
 use crate::data::interaction_movement::ItemMovementState;
 use crate::data::inventory_type::{InventoryTypes, InventoryType};
-
 use dioxus::prelude::*;
 
 pub fn InventoryGUI(cx: Scope) -> Element {

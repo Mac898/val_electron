@@ -1,7 +1,7 @@
-use dioxus::prelude::*;
 use crate::data::interaction_movement::ItemMovementState;
 use crate::data::Inventory;
 use crate::data::inventory_actions::ItemActions;
+use dioxus::prelude::*;
 
 pub fn PropertiesControls(cx: Scope) -> Element {
     let item_movement = use_shared_state::<ItemMovementState>(cx).unwrap();

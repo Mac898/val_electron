@@ -1,7 +1,7 @@
 #![allow(non_snake_case)]
 
 mod components;
-mod data;
+pub mod data;
 
 use dioxus::prelude::*;
 use log::LevelFilter;
@@ -15,7 +15,7 @@ use components::properties::PropertiesControls;
 
 use data::Inventory;
 use data::interaction_movement::ItemMovementState;
-use crate::data::inventory_type::{InventoryTypes, SmallChestType};
+use data::inventory_type::{InventoryTypes, SmallChestType};
 
 fn main() {
     // Setup the logger
