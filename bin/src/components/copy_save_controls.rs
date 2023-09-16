@@ -60,6 +60,17 @@ pub fn InventoryCopySaveControls(cx: Scope) -> Element {
                 "Export Inventory"
             }
             textarea {
+                box_sizing: "border-box",
+                placeholder: "(Required)",
+                display: "block",
+                margin: "10px auto",
+                padding: "10px 20px",
+                font_size: "16px",
+                color: "#333",
+                border: "2px solid #007bff",
+                cursor: "pointer",
+                transition: "background-color 0.3s, transform 0.2s",
+                width: "100%",
                 placeholder: "Import/Export Text...",
                 value: "{import_export_text}",
                 oninput: move |event| {
