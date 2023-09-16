@@ -1,8 +1,10 @@
+use std::ops::{Deref, DerefMut};
 use dioxus::prelude::*;
 use crate::data::Inventory;
 
 pub fn InventoryCopySaveControls(cx: Scope) -> Element {
     let inventory = use_shared_state::<Inventory>(cx).unwrap();
+    let import_export_text = use_state(cx, || "".to_string());
 
     cx.render( rsx!(
         div {
@@ -30,6 +32,10 @@ pub fn InventoryCopySaveControls(cx: Scope) -> Element {
                 transition: "background-color 0.3s, transform 0.2s",
                 width: "100%",
                 onclick: move |_| {
+                    let mut rinventory = inventory.write();
+                    if !import_export_text.is_empty() {
+                        *rinventory.deref_mut() = serde_json::from_str::<Inventory>(import_export_text).unwrap();
+                    }
                 },
                 "Import Inventory"
             }
@@ -48,10 +54,17 @@ pub fn InventoryCopySaveControls(cx: Scope) -> Element {
                 onclick: move |_| {
                     let rinventory = inventory.read();
                     if !rinventory.gui_name.is_empty() {
-
+                        import_export_text.set(serde_json::to_string(rinventory.deref()).unwrap());
                     }
                 },
                 "Export Inventory"
+            }
+            textarea {
+                placeholder: "Import/Export Text...",
+                value: "{import_export_text}",
+                oninput: move |event| {
+                    import_export_text.set(event.value.clone());
+                },
             }
         }
     ))

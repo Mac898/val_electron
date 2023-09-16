@@ -39,7 +39,7 @@ pub fn InventoryTextControls(cx: Scope) -> Element {
 
             // Text - GUI Name
             input {
-                placeholder: "Name of your GUI",
+                placeholder: "Name of your GUI (Required)",
                 display: "block",
                 margin: "10px auto",
                 padding: "10px 20px",

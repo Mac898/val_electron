@@ -1,4 +1,6 @@
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+
 use crate::data::inventory_items::Item;
 use crate::data::inventory_type::{InventoryType, SmallChestType};
 
@@ -7,6 +9,7 @@ pub mod inventory_type;
 pub mod inventory_items;
 pub mod inventory_actions;
 
+#[derive(Serialize, Deserialize)]
 pub struct Inventory {
     pub slots: HashMap<u32, Item>,
     pub name: String,
