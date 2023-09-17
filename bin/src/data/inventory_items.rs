@@ -6,7 +6,8 @@ use serde_derive::{Serialize, Deserialize};
 #[derive(Clone, Default, Serialize, Deserialize)]
 pub struct Item {
     pub id: String,
-    pub on_click: Option<ItemActions>,
+    pub count: i8,
+    pub actions: ItemActions
 }
 impl From<ItemMC> for Item {
     fn from(item: ItemMC) -> Self {

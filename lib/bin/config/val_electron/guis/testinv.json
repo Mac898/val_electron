@@ -1,0 +1,103 @@
+{
+  "slots": {
+    "1": {
+      "id": "netherite_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": {
+          "ChangeServer": "survival"
+        }
+      }
+    },
+    "3": {
+      "id": "wooden_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": {
+          "Command": "help"
+        }
+      }
+    },
+    "5": {
+      "id": "golden_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "7": {
+      "id": "diamond_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "10": {
+      "id": "redstone",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "12": {
+      "id": "redstone",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "14": {
+      "id": "redstone",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "16": {
+      "id": "redstone",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "19": {
+      "id": "diamond_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "21": {
+      "id": "golden_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": null
+      }
+    },
+    "23": {
+      "id": "wooden_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": {
+          "ChangeUI": "test2"
+        }
+      }
+    },
+    "25": {
+      "id": "netherite_pickaxe",
+      "count": 0,
+      "actions": {
+        "on_click": {
+          "ChangeServer": "test"
+        }
+      }
+    }
+  },
+  "name": "Chest",
+  "gui_name": "test",
+  "kind": {
+    "SmallChest": {
+      "rows": 3
+    }
+  }
+}

@@ -1,6 +1,6 @@
 use crate::data::interaction_movement::ItemMovementState;
+use crate::data::inventory_actions::ItemAction;
 use crate::data::Inventory;
-use crate::data::inventory_actions::ItemActions;
 use dioxus::prelude::*;
 
 pub fn PropertiesControls(cx: Scope) -> Element {
@@ -8,7 +8,9 @@ pub fn PropertiesControls(cx: Scope) -> Element {
 
     let properties_panel = if item_movement.read().selected_item.is_some() {
         let item_slot = item_movement.read().selected_item.unwrap();
-        rsx!( ItemOnClickProperty { item_slot: item_slot } )
+        rsx!(ItemOnClickProperty {
+            item_slot: item_slot
+        })
     } else {
         rsx!( h1 { "No Item Selected" } )
     };
@@ -39,83 +41,84 @@ pub fn ItemOnClickProperty(cx: Scope<ItemOnClickPropertyProp>) -> Element {
     // Fields according to the item
     let inventory_read = inventory.read();
     let on_click_field = if let Some(item) = inventory_read.slots.get(&cx.props.item_slot) {
-        if let Some(on_click) = &item.on_click {
+        if let Some(on_click) = &item.actions.on_click {
             match on_click {
-                ItemActions::ChangeUI(txt) => {
-                    rsx!(
-                        input {
-                            placeholder: "UI Name",
-                            display: "block",
-                            margin: "10px auto",
-                            padding: "10px 20px",
-                            font_size: "16px",
-                            color: "#333",
-                            border: "2px solid #007bff",
-                            cursor: "pointer",
-                            transition: "background-color 0.3s, transform 0.2s",
-                            width: "100%",
-                            value: "{txt}",
-                            oninput: move |evt| {
-                                if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot) {
-                                    if let Some(on_click) = &mut item.on_click {
-                                        *on_click = ItemActions::ChangeUI(evt.value.clone());
-                                    }
+                ItemAction::ChangeUI(txt) => {
+                    rsx!(input {
+                        placeholder: "UI Name",
+                        display: "block",
+                        margin: "10px auto",
+                        padding: "10px 20px",
+                        font_size: "16px",
+                        color: "#333",
+                        border: "2px solid #007bff",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s, transform 0.2s",
+                        width: "100%",
+                        value: "{txt}",
+                        oninput: move |evt| {
+                            if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot)
+                            {
+                                if let Some(on_click) = &mut item.actions.on_click {
+                                    *on_click = ItemAction::ChangeUI(evt.value.clone());
                                 }
                             }
                         }
-                    )
-                },
-                ItemActions::Command(txt) => {
-                    rsx!(
-                        input {
-                            placeholder: "Command",
-                            display: "block",
-                            margin: "10px auto",
-                            padding: "10px 20px",
-                            font_size: "16px",
-                            color: "#333",
-                            border: "2px solid #007bff",
-                            cursor: "pointer",
-                            transition: "background-color 0.3s, transform 0.2s",
-                            width: "100%",
-                            value: "{txt}",
-                            oninput: move |evt| {
-                                if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot) {
-                                    if let Some(on_click) = &mut item.on_click {
-                                        *on_click = ItemActions::Command(evt.value.clone());
-                                    }
+                    })
+                }
+                ItemAction::Command(txt) => {
+                    rsx!(input {
+                        placeholder: "Command",
+                        display: "block",
+                        margin: "10px auto",
+                        padding: "10px 20px",
+                        font_size: "16px",
+                        color: "#333",
+                        border: "2px solid #007bff",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s, transform 0.2s",
+                        width: "100%",
+                        value: "{txt}",
+                        oninput: move |evt| {
+                            if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot)
+                            {
+                                if let Some(on_click) = &mut item.actions.on_click {
+                                    *on_click = ItemAction::Command(evt.value.clone());
                                 }
                             }
                         }
-                    )
-                },
-                ItemActions::ChangeServer(txt) => {
-                    rsx!(
-                        input {
-                            placeholder: "Server Name",
-                            display: "block",
-                            margin: "10px auto",
-                            padding: "10px 20px",
-                            font_size: "16px",
-                            color: "#333",
-                            border: "2px solid #007bff",
-                            cursor: "pointer",
-                            transition: "background-color 0.3s, transform 0.2s",
-                            width: "100%",
-                            value: "{txt}",
-                            oninput: move |evt| {
-                                if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot) {
-                                    if let Some(on_click) = &mut item.on_click {
-                                        *on_click = ItemActions::ChangeServer(evt.value.clone());
-                                    }
+                    })
+                }
+                ItemAction::ChangeServer(txt) => {
+                    rsx!(input {
+                        placeholder: "Server Name",
+                        display: "block",
+                        margin: "10px auto",
+                        padding: "10px 20px",
+                        font_size: "16px",
+                        color: "#333",
+                        border: "2px solid #007bff",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s, transform 0.2s",
+                        width: "100%",
+                        value: "{txt}",
+                        oninput: move |evt| {
+                            if let Some(item) = inventory.write().slots.get_mut(&cx.props.item_slot)
+                            {
+                                if let Some(on_click) = &mut item.actions.on_click {
+                                    *on_click = ItemAction::ChangeServer(evt.value.clone());
                                 }
                             }
                         }
-                    )
+                    })
                 }
             }
-        } else {rsx!("")}
-    } else {rsx!("")};
+        } else {
+            rsx!("")
+        }
+    } else {
+        rsx!("")
+    };
 
     cx.render(rsx!(
         h1 { "On Click Action" }
@@ -125,35 +128,35 @@ pub fn ItemOnClickProperty(cx: Scope<ItemOnClickPropertyProp>) -> Element {
                 let item = winventory.slots.get_mut(&cx.props.item_slot).unwrap();
                 match event.value.as_str() {
                     "ChangeUI" => {
-                        item.on_click = Some(ItemActions::ChangeUI("".to_string()));
+                        item.actions.on_click = Some(ItemAction::ChangeUI("".to_string()));
                     }
                     "Command" => {
-                        item.on_click = Some(ItemActions::Command("".to_string()));
+                        item.actions.on_click = Some(ItemAction::Command("".to_string()));
                     }
                     "ChangeServer" => {
-                        item.on_click = Some(ItemActions::ChangeServer("".to_string()));
+                        item.actions.on_click = Some(ItemAction::ChangeServer("".to_string()));
                     }
                     _ => {}
                 }
             },
             option {
                 value: "Select",
-                selected: inventory.read().slots.get(&cx.props.item_slot).unwrap().on_click.is_none(),
+                selected: inventory.read().slots.get(&cx.props.item_slot).unwrap().actions.on_click.is_none(),
                 "Select Option",
             }
             option {
                 value: "ChangeUI",
-                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().on_click, Some(ItemActions::ChangeUI(_))),
+                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().actions.on_click, Some(ItemAction::ChangeUI(_))),
                 "Change UI"
             }
             option {
                 value: "Command",
-                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().on_click, Some(ItemActions::Command(_))),
+                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().actions.on_click, Some(ItemAction::Command(_))),
                 "Chat Command"
             }
             option {
                 value: "ChangeServer",
-                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().on_click, Some(ItemActions::ChangeServer(_))),
+                selected: matches!(inventory.read().slots.get(&cx.props.item_slot).unwrap().actions.on_click, Some(ItemAction::ChangeServer(_))),
                 "Change Server (Bungee/Velocity Network Only)"
             }
         }

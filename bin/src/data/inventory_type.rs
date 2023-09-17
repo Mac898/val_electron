@@ -1,7 +1,8 @@
 use enum_dispatch::enum_dispatch;
+use serde_derive::{Serialize, Deserialize};
 
 #[enum_dispatch]
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub enum InventoryTypes {
     SmallChest(SmallChestType),
     LargeChest(LargeChestType),
@@ -23,7 +24,7 @@ pub trait InventoryType {
     fn default_name(&self) -> String;
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub struct SmallChestType {
     pub rows: u32,
 }
@@ -40,7 +41,7 @@ impl InventoryType for SmallChestType {
     }
 
     fn get_rows(&self) -> u32 {
-        return self.rows
+        self.rows
     }
 
     fn get_min_columns(&self) -> u32 {
@@ -62,7 +63,7 @@ impl InventoryType for SmallChestType {
     }
 }
 
-#[derive(PartialEq, Clone)]
+#[derive(PartialEq, Clone, Serialize, Deserialize)]
 pub struct LargeChestType {
     pub rows: u32,
 }
@@ -79,7 +80,7 @@ impl InventoryType for LargeChestType {
     }
 
     fn get_rows(&self) -> u32 {
-        return self.rows
+        self.rows
     }
 
     fn get_min_columns(&self) -> u32 {
@@ -103,7 +104,7 @@ impl InventoryType for LargeChestType {
     }
 }
 
-#[derive(PartialEq, Default, Clone)]
+#[derive(PartialEq, Default, Clone, Serialize, Deserialize)]
 pub struct HopperType {}
 impl InventoryType for HopperType {
     fn get_columns(&self) -> u32 {
@@ -135,7 +136,7 @@ impl InventoryType for HopperType {
     }
 }
 
-#[derive(PartialEq, Default, Clone)]
+#[derive(PartialEq, Default, Clone, Serialize, Deserialize)]
 pub struct DispenserType {}
 impl InventoryType for DispenserType {
     fn get_columns(&self) -> u32 {

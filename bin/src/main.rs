@@ -1,7 +1,7 @@
 #![allow(non_snake_case)]
 
 mod components;
-pub mod data;
+mod data;
 
 use dioxus::prelude::*;
 use log::LevelFilter;
