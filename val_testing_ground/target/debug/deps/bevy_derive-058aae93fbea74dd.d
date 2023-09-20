@@ -1,0 +1,9 @@
+E:\code\val_electron\val_testing_ground\target\debug\deps\bevy_derive-058aae93fbea74dd.dll: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\app_plugin.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\bevy_main.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\derefs.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\enum_variant_meta.rs
+
+E:\code\val_electron\val_testing_ground\target\debug\deps\bevy_derive-058aae93fbea74dd.d: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\app_plugin.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\bevy_main.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\derefs.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\enum_variant_meta.rs
+
+C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\lib.rs:
+C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\app_plugin.rs:
+C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\bevy_main.rs:
+C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\derefs.rs:
+C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_derive-0.11.2\src\enum_variant_meta.rs:

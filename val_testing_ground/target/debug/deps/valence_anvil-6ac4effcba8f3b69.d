@@ -1,0 +1,10 @@
+E:\code\val_electron\val_testing_ground\target\debug\deps\valence_anvil-6ac4effcba8f3b69.rmeta: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\bevy.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\parsing.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\../README.md
+
+E:\code\val_electron\val_testing_ground\target\debug\deps\libvalence_anvil-6ac4effcba8f3b69.rlib: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\bevy.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\parsing.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\../README.md
+
+E:\code\val_electron\val_testing_ground\target\debug\deps\valence_anvil-6ac4effcba8f3b69.d: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\bevy.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\parsing.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\../README.md
+
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\lib.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\bevy.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\parsing.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_anvil\src\../README.md:

@@ -1,0 +1,20 @@
+[package]
+name = "val_electron_gui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+valence = { path = "../../valence" }
+bevy = {version = "0.11"}
+val_electron_builder = {path = "../bin"}
+serde = "1.0.188"
+serde_json = "1.0.107"
+serde_derive = "1.0.188"
+
+[[bin]]
+name = "val_electron_test"
+path = "bin/valence.rs"
+
+[lib]
+name = "val_electron_gui"
+path = "src/lib.rs"

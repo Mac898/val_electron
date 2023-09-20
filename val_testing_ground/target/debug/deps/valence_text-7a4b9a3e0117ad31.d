@@ -1,0 +1,10 @@
+E:\code\val_electron\val_testing_ground\target\debug\deps\valence_text-7a4b9a3e0117ad31.rmeta: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\color.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\into_text.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\../README.md
+
+E:\code\val_electron\val_testing_ground\target\debug\deps\libvalence_text-7a4b9a3e0117ad31.rlib: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\color.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\into_text.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\../README.md
+
+E:\code\val_electron\val_testing_ground\target\debug\deps\valence_text-7a4b9a3e0117ad31.d: C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\lib.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\color.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\into_text.rs C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\../README.md
+
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\lib.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\color.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\into_text.rs:
+C:\Users\Administrator\.cargo\git\checkouts\valence-2d8928a5369b1dba\06e1417\crates\valence_text\src\../README.md:
