@@ -1,9 +1,0 @@
-E:\code\val_electron\val_testing_ground\target\debug\deps\bevy_ecs_macros-bdbbab079d158f1a.dll: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\component.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\fetch.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\set.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\states.rs
-
-E:\code\val_electron\val_testing_ground\target\debug\deps\bevy_ecs_macros-bdbbab079d158f1a.d: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\component.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\fetch.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\set.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\states.rs
-
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\lib.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\component.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\fetch.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\set.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\bevy_ecs_macros-0.11.2\src\states.rs:

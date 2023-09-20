@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-valence = { path = "../../valence" }
+valence = { git = "https://github.com/valence-rs/valence" }
 bevy = {version = "0.11"}
 val_electron_builder = {path = "../bin"}
 serde = "1.0.188"

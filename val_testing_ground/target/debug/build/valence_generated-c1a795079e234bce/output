@@ -1,4 +1,0 @@
-cargo:rerun-if-changed=extracted/blocks.json
-cargo:rerun-if-changed=extracted/items.json
-cargo:rerun-if-changed=extracted/sounds.json
-cargo:rerun-if-changed=extracted/packets.json

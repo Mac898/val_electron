@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="CPP_MODULE" version="4">
+<module type="EMPTY_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/bin/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/lib/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/val_electron/bin/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/val_electron/lib/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/val_electron/lib/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/val_testing_ground/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/benches" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_advancement/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_anvil/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_boss_bar/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_build_utils/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_entity/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_generated/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_ident/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_ident_macros/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_inventory/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_lang/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_math/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_nbt/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_network/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_player_list/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_protocol/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_protocol_macros/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_registry/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_scoreboard/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_server/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_server_common/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_spatial/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_text/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_weather/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/crates/valence_world_border/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/examples" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/tools/dump_schedule/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/tools/packet_inspector/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/tools/playground/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/valence/tools/stresser/src" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/val_electron/target" />
-      <excludeFolder url="file://$MODULE_DIR$/val_testing_ground/target" />
-      <excludeFolder url="file://$MODULE_DIR$/valence/target" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -8,7 +8,6 @@ use std::fs;
 
 use valence::inventory::ClickSlotEvent;
 use valence::prelude::*;
-use valence::ItemKind;
 
 pub fn init(mut commands: Commands) {
     // Make sure directories are present!
@@ -54,7 +53,6 @@ pub fn init(mut commands: Commands) {
                 ItemStack::new(ItemKind::from_str(&item.id).unwrap(), 1, None),
             );
         }
-        internal_inventory.set_slot(0, ItemStack::new(ItemKind::Redstone, 1, None));
 
         // And finally the slot actions.
         let mut actions = HashMap::with_capacity(
@@ -69,36 +67,14 @@ pub fn init(mut commands: Commands) {
         let gui_runnable_inventory = InventoryGUI {
             name: gui_inventory.gui_name,
             slot_actions: actions,
-            inv_backup: internal_inventory.clone(),
         };
         commands.spawn((gui_runnable_inventory, internal_inventory));
     }
 }
 
-pub fn handle_item_click(
-    mut commands: Commands,
-    mut inventories: Query<
-        (Entity, &mut valence::inventory::Inventory, &InventoryGUI),
-        (With<InventoryGUI>, With<valence::inventory::Inventory>),
-    >,
-    mut events: EventReader<ClickSlotEvent>,
-) {
+pub fn handle_item_click(mut commands: Commands, mut events: EventReader<ClickSlotEvent>) {
     for event in events.iter() {
-        // Restore Inventory If Item Removed
-        if event.carried_item.item != ItemKind::Air {
-            for (_, mut ii, ig) in inventories.iter_mut() {
-                *ii = ig.inv_backup.clone();
-
-                // Perform Action
-                println!("Event: {:#?}", event);
-                if let Some(action) = ig.slot_actions.get(&(event.slot_id as u32)) {
-                    println!("Action triggered: {:?}", action);
-                }
-            }
-            let player = &mut commands.entity(event.client);
-            player.insert(CursorItem {
-                0: ItemStack::EMPTY,
-            });
-        }
+        println!("{:?}", event);
+        println!("{:?}", event.client);
     }
 }
