@@ -1,7 +1,7 @@
-use bevy::log::*;
 use val_electron_gui::component::InventoryGUI;
 use val_electron_gui::ElectronGUIPlugin;
 use valence::interact_block::InteractBlockEvent;
+use valence::log::*;
 use valence::prelude::*;
 
 fn main() {
@@ -82,7 +82,7 @@ fn init_clients(
 
 fn open_chest(
     mut commands: Commands,
-    inventories: Query<Entity, (With<InventoryGUI>, With<Inventory>)>,
+    inventories: Query<Entity, With<InventoryGUI>>,
     mut events: EventReader<InteractBlockEvent>,
 ) {
     for event in events.iter() {

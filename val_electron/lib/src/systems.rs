@@ -1,13 +1,14 @@
-use crate::component::InventoryGUI;
+use super::component::*;
 
-use val_electron_data::data::inventory_type::{InventoryType, InventoryTypes};
+use val_electron_data::data::inventory_type::InventoryTypes;
 use val_electron_data::data::Inventory;
 
-use std::collections::HashMap;
 use std::fs;
 
-use valence::inventory::ClickSlotEvent;
+use valence::inventory::ClientInventoryState;
+use valence::log;
 use valence::prelude::*;
+use valence::protocol::packets::play::CloseScreenS2c;
 
 pub fn init(mut commands: Commands) {
     // Make sure directories are present!
@@ -43,38 +44,42 @@ pub fn init(mut commands: Commands) {
             InventoryTypes::Dispenser(_) => InventoryKind::Generic3x3,
         };
 
-        let mut internal_inventory =
-            valence::inventory::Inventory::with_title(kind, gui_inventory.name);
-
         // Slots!
-        for (slot, item) in &gui_inventory.slots {
-            internal_inventory.set_slot(
-                *slot as u16,
-                ItemStack::new(ItemKind::from_str(&item.id).unwrap(), 1, None),
-            );
-        }
-
-        // And finally the slot actions.
-        let mut actions = HashMap::with_capacity(
-            (gui_inventory.kind.get_columns() * gui_inventory.kind.get_rows()) as usize,
-        );
-
-        for (slot, item) in &gui_inventory.slots {
-            actions.insert(*slot, item.actions.clone());
-        }
 
         // Construct the final data type.
         let gui_runnable_inventory = InventoryGUI {
             name: gui_inventory.gui_name,
-            slot_actions: actions,
+            title: gui_inventory.name.into_text(),
+            kind,
+            items: gui_inventory.slots,
         };
-        commands.spawn((gui_runnable_inventory, internal_inventory));
+        commands.spawn(gui_runnable_inventory);
+        log::info!("Successfully created new InventoryGUI");
     }
 }
 
-pub fn handle_item_click(mut commands: Commands, mut events: EventReader<ClickSlotEvent>) {
-    for event in events.iter() {
-        println!("{:?}", event);
-        println!("{:?}", event.client);
+pub fn packet_gui_update(
+    mut commands: Commands,
+    mut clients: Query<(
+        Entity,
+        &mut Client,
+        &mut ClientInventoryState,
+        &mut OpenInventory,
+        Ref<CursorItem>,
+    )>,
+    mut inventories: Query<&mut InventoryGUI>,
+) {
+    for (client_entity, mut client, mut inv_state, mut open_inventory, cursor_item) in &mut clients
+    {
+        let Ok(mut inventory) = inventories.get_mut(open_inventory.entity) else {
+            // Delete open inventory as the inventory is nonexistent.
+            commands.entity(client_entity).remove::<OpenInventory>();
+
+            client.write_packet(&CloseScreenS2c {
+                window_id: inv_state.window_id,
+            });
+
+            continue;
+        };
     }
 }

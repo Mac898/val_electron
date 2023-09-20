@@ -1,10 +1,9 @@
 pub mod component;
 pub mod systems;
 
-use bevy::app::Plugin;
-use bevy::log::*;
 use valence::prelude::*;
 use valence::{MINECRAFT_VERSION, PROTOCOL_VERSION};
+use valence::log::*;
 
 use systems::*;
 
@@ -18,7 +17,7 @@ impl Plugin for ElectronGUIPlugin {
         app.add_systems(Startup, init);
 
         // Inject Handlers
-        app.add_systems(Update, handle_item_click);
+        app.add_systems(Update, packet_gui_update);
 
         // Finish Up
     }
