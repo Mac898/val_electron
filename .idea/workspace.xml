@@ -3,6 +3,14 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/val_electron/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/val_testing_ground/Cargo.toml" />
@@ -10,22 +18,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee307ead-909f-400e-8eb1-178f85d8cee1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/val_electron.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/val_electron.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_electron/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_electron/lib/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/lib/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_electron/lib/bin/valence.rs" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/lib/bin/valence.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_electron/lib/src/component.rs" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/lib/src/component.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_electron/lib/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/lib/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/val_electron/lib/src/systems.rs" beforeDir="false" afterPath="$PROJECT_DIR$/val_electron/lib/src/systems.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_testing_ground/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/val_testing_ground/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/val_testing_ground/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/val_testing_ground/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/valence" beforeDir="false" afterPath="$PROJECT_DIR$/valence" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -56,15 +58,19 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
     "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/mac/Code/val_electron/val_electron/bin",
+    "last_opened_file_path": "/home/mac/Code/MagmaMCCloud",
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "settings.editor.selected.configurable": "language.rust.rustfmt"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Cargo.Run val_electron Test Server ">
+  <component name="RunManager" selected="Shell Script.Run val_electron Builder GUI">
     <configuration name="Run Valence Testing Ground" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package val_testing_ground --bin val_testing_ground" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$/val_testing_ground" />
@@ -119,16 +125,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Cargo.Run val_electron Test Server " />
       <item itemvalue="Cargo.Run Valence Testing Ground" />
+      <item itemvalue="Cargo.Run val_electron Test Server " />
       <item itemvalue="Shell Script.Run val_electron Builder GUI" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Cargo.Run val_electron Test Server " />
-        <item itemvalue="Cargo.Run Valence Testing Ground" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
@@ -148,11 +148,20 @@
       <workItem from="1695180834723" duration="723000" />
       <workItem from="1695189360282" duration="6000" />
       <workItem from="1695189377109" duration="1717000" />
+      <workItem from="1695191643184" duration="79000" />
+      <workItem from="1695197652783" duration="1639000" />
+      <workItem from="1696989920426" duration="191000" />
+      <workItem from="1696990128391" duration="247000" />
+      <workItem from="1696990394190" duration="262000" />
+      <workItem from="1703047977796" duration="72000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.configurationType" implementationName="CargoCommandRunConfiguration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

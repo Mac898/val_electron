@@ -1,4 +1,5 @@
 use super::component::*;
+use std::borrow::Cow;
 
 use val_electron_data::data::inventory_type::InventoryTypes;
 use val_electron_data::data::Inventory;
@@ -8,7 +9,9 @@ use std::fs;
 use valence::inventory::ClientInventoryState;
 use valence::log;
 use valence::prelude::*;
-use valence::protocol::packets::play::CloseScreenS2c;
+use valence::protocol::packets::play::open_screen_s2c::WindowType;
+use valence::protocol::packets::play::{CloseScreenS2c, InventoryS2c, OpenScreenS2c};
+use valence::protocol::VarInt;
 
 pub fn init(mut commands: Commands) {
     // Make sure directories are present!
@@ -71,8 +74,8 @@ pub fn packet_gui_update(
 ) {
     for (client_entity, mut client, mut inv_state, mut open_inventory, cursor_item) in &mut clients
     {
-        let Ok(mut inventory) = inventories.get_mut(open_inventory.entity) else {
-            // Delete open inventory as the inventory is nonexistent.
+        let Ok(mut gui) = inventories.get_mut(open_inventory.entity) else {
+            // Delete open inventory as the GUI is nonexistent.
             commands.entity(client_entity).remove::<OpenInventory>();
 
             client.write_packet(&CloseScreenS2c {
@@ -81,5 +84,24 @@ pub fn packet_gui_update(
 
             continue;
         };
+
+        // Send GUI initialization packets.
+        if open_inventory.is_added() {
+            inv_state.window_id = inv_state.window_id % 100 + 1;
+            open_inventory.client_changed = 0;
+
+            client.write_packet(&OpenScreenS2c {
+                window_id: VarInt(inv_state.window_id.into()),
+                window_type: WindowType::from(gui.kind),
+                window_title: Cow::Borrowed(&gui.title),
+            });
+
+            client.write_packet(&InventoryS2c {
+                window_id: inv_state.window_id,
+                state_id: VarInt(inv_state.state_id.0),
+                slots: Cow::Borrowed(gui.items.iter().map(|s| {}).collect()),
+                carried_item: Cow::Borrowed(&cursor_item.0),
+            });
+        }
     }
 }
